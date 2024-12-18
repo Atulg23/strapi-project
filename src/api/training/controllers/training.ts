@@ -164,4 +164,30 @@ export default factories.createCoreController('api::training.training', ({ strap
       ctx.badRequest('Unable to fetch training counts');
     }
   },
+  /**
+   * Fetch each of trainings details based on slug
+   * 
+   * @param {Object} ctx - Context object for the request
+   */
+  async findBySlug(ctx) {
+    try {
+      const { slug } = ctx.params; // Get slug from request parameters
+      console.log("slug is", slug)  
+      // Find the training where the slug matches
+      const training = await strapi.db.query('api::training.training').findOne({
+        where: { slug },
+        populate: ['employees'], // Include employees relation if needed
+      });
+      console.log("training info", training)
+      // If no training found, return 404
+      if (!training) {
+        return ctx.notFound('Training not found');
+      }
+
+      // Return the training details
+      return ctx.send(training);
+    } catch (err) {
+      return ctx.badRequest('Unable to fetch training details',);
+    }
+  },
 }));

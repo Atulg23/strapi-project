@@ -86,6 +86,21 @@ export default {
           auth: false,
         },
       },
+      /**
+       * Route: Fetch each of trainings by details using slug
+       * Method: GET
+       * Path: /trainings/slug/:slug
+       * Handler: findBySlug (controller function)
+       * Auth: false (no authentication required)
+       */
+      {
+        method: 'GET',
+        path: '/trainings/slug/:slug',
+        handler: 'training.findBySlug',
+        config: {
+          auth: false,
+        },
+      },
     ],
   };
   
