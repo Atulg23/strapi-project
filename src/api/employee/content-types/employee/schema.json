@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "employees",
+  "info": {
+    "singularName": "employee",
+    "pluralName": "employees",
+    "displayName": "employee",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "completed": {
+      "type": "integer",
+      "default": 0
+    },
+    "upcoming": {
+      "type": "integer",
+      "default": 0
+    },
+    "active": {
+      "type": "integer",
+      "default": 0
+    },
+    "employeeId": {
+      "type": "string"
+    },
+    "trainings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::training.training",
+      "mappedBy": "employees"
+    }
+  }
+}
