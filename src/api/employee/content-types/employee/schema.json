@@ -38,6 +38,10 @@
       "relation": "manyToMany",
       "target": "api::training.training",
       "mappedBy": "employees"
+    },
+    "designation": {
+      "type": "string",
+      "required": false
     }
   }
 }
